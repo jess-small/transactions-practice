@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="mb-6 text-center">Expenses</h1>
-      {transactions.length === 0 ? (
+      {transactions && transactions.length === 0 ? (
         <div className="text-center text-gray-500 text-xl">
           No transactions found
         </div>
@@ -34,14 +34,18 @@ function App() {
                   key={transaction.id}
                   className="hover:bg-gray-50 transition-colors capitalize"
                 >
-                  <td className="">{transaction.id}</td>
+                  <td className="">{transaction?.id}</td>
                   <td>
-                    {format(new Date(transaction.date), "HH:mm - dd/MM/yyyy")}
+                    {transaction?.date &&
+                      format(new Date(transaction.date), "HH:mm - dd/MM/yyyy")}
                   </td>
-                  <td>£{transaction.amount.toFixed(2)}</td>
-                  <td>{transaction.merchant}</td>
+                  <td>
+                    {" "}
+                    {transaction?.amount && `£${transaction.amount.toFixed(2)}`}
+                  </td>
+                  <td>{transaction?.merchant}</td>
 
-                  <td>{transaction.category}</td>
+                  <td>{transaction?.category}</td>
                 </tr>
               ))}
             </tbody>

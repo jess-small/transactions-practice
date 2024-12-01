@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  @apply text-4xl font-bold;
+}
+
+table {
+  @apply border-collapse;
+}
+th,
+td {
+  @apply p-3 border border-gray-300;
+}
+
+th {
+  @apply text-left font-extrabold;
+}
